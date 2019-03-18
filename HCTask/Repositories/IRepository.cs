@@ -8,7 +8,7 @@ namespace HCTask.Repositories
     public interface IRepositoryBase<T>
     {
         Task<IEnumerable<T>> FindAllAsync();
-        Task<IEnumerable<T>> FindByIdAsync(int Id);
+        Task<T> FindByIdAsync(int Id);
         Task<IEnumerable<T>> SearchAsync(string searchText);
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
