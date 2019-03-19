@@ -42,7 +42,7 @@ namespace HCTask.Repositories
 
         public async Task<IEnumerable<Person>> SearchAsync(string searchText)
         {
-            return await _context.People.(p => p.FirstName.Contains(searchText) || p.LastName.Contains(searchText));
+            throw new NotImplementedException();
         }
 
         public async Task<Person> UpdateAsync(Person entity)

@@ -15,37 +15,32 @@ namespace HCTask.Repositories
             _context = context;
         }
 
-        public Address Create(Address entity)
+        public Task<Address> CreateAsync(Address entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Address entity)
+        public Task DeleteAsync(Address entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Address> FindAll()
+        public Task<IEnumerable<Address>> FindAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Address> FindById(int Id)
+        public Task<Address> FindByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Address entity)
+        public Task<IEnumerable<Address>> SearchAsync(string searchText)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Address> Search(string searchText)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Address Update(Address entity)
+        public Task<Address> UpdateAsync(Address entity)
         {
             throw new NotImplementedException();
         }

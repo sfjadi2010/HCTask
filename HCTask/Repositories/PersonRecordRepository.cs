@@ -8,42 +8,32 @@ namespace HCTask.Repositories
 {
     public class PersonRecordRepository : IRepositoryBase<PersonRecord>
     {
-        public PersonRecord Create(PersonRecord entity)
+        public async Task<PersonRecord> CreateAsync(PersonRecord entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(PersonRecord entity)
+        public async Task DeleteAsync(PersonRecord entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PersonRecord> FindAll()
+        public async Task<IEnumerable<PersonRecord>> FindAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PersonRecord> FindById(string Id)
+        public async Task<PersonRecord> FindByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PersonRecord> FindById(int Id)
+        public async Task<IEnumerable<PersonRecord>> SearchAsync(string searchText)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(PersonRecord entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PersonRecord> Search(string searchText)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PersonRecord Update(PersonRecord entity)
+        public async Task<PersonRecord> UpdateAsync(PersonRecord entity)
         {
             throw new NotImplementedException();
         }
