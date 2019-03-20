@@ -2,4 +2,14 @@
   <div class="card-header">
     {{pageTitle}}
   </div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="savePerson()" [formGroup]="personForm">
+
+    </form>
+  </div>
+
+  <div class="card-footer">
+    
+  </div>
 </div>
