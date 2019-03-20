@@ -1,4 +1,6 @@
 ﻿using HCTask.Models;
+using HCTask.PersonContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,19 @@ namespace HCTask.Repositories
 {
     public class PersonRecordRepository : IRepositoryBase<PersonRecord>
     {
+        private readonly PersonDbContext _context;
+
+        public PersonRecordRepository(PersonDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<PersonRecord> CreateAsync(PersonRecord entity)
         {
-            throw new NotImplementedException();
+            _context.People.Add(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
         }
 
         public async Task DeleteAsync(PersonRecord entity)
@@ -20,7 +32,7 @@ namespace HCTask.Repositories
 
         public async Task<IEnumerable<PersonRecord>> FindAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.People.ToListAsync();
         }
 
         public async Task<PersonRecord> FindByIdAsync(int Id)

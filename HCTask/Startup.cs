@@ -23,8 +23,8 @@ namespace HCTask
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<PersonRepository>();
-            services.AddScoped<AddressRepository>();
+            services.AddScoped<PersonRecordRepository>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<PersonDbContext>(options => 

@@ -11,7 +11,6 @@ namespace HCTask.PersonContext
     {
         public PersonDbContext(DbContextOptions<PersonDbContext> options) : base(options) { }
         
-        public DbSet<Person> People { get; set; }
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<PersonRecord> People { get; set; }
     }
 }
