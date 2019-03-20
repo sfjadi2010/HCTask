@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PersonComponent } from './people/person/person.component';
+import { AddPersonComponent } from './people/add-person/add-person.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PersonComponent } from './people/person/person.component';
     NavMenuComponent,
     HomeComponent,
     FetchDataComponent,
-    PersonComponent
+    PersonComponent,
+    AddPersonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,7 +28,7 @@ import { PersonComponent } from './people/person/person.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'add-person', component: PersonComponent }
+      { path: 'add-person', component: AddPersonComponent }
     ])
   ],
   providers: [],
