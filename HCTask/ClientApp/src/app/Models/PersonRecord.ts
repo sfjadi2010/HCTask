@@ -10,5 +10,5 @@ export class PersonRecord {
     City: string;
     State: string;
     PostalCode: string;
-    PictureName: string;
+    Picturefile: string;
 }

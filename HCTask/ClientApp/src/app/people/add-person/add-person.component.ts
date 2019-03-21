@@ -31,7 +31,7 @@ export class AddPersonComponent implements OnInit {
       city: ['', Validators.required],
       postalCode: ['', Validators.required],
       state: [''],
-      pictureName: ['']
+      pictureFile: ['']
     });
   }
 

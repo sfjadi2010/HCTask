@@ -1,72 +1,205 @@
 <div class="card">
   <div class="card-header">
-    {{pageTitle}}
+    <h4>{{pageTitle}}</h4>
   </div>
 
   <div class="card-body">
     <form novalidate (ngSubmit)="savePerson()" [formGroup]="personForm">
       <h5>Personal Information</h5>
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="firstNameId" class="col-md-2 col-form-label">First Name</label>
-        <input id="firstNameId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="firstNameId"
+                 class="form-control"
+                 type="text"
+                 placeholder="First Name (required)"
+                 formControlName="firstName"
+                 [ngClass]="{'is-invalid': (personForm.get('firstName').touched ||
+                                          personForm.get('firstName').dirty) &&
+                                          !personForm.get('firstName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('firstName').errors?.required">
+              Please enter your first name.
+            </span>
+          </span>
+
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="lastNameId" class="col-md-2 col-form-label">Last Name</label>
-        <input id="lastNameId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="lastNameId"
+                 class="form-control"
+                 type="text"
+                 placeholder="Last Name (required)"
+                 formControlName="lastName"
+                 [ngClass]="{'is-invalid': (personForm.get('lastName').touched ||
+                                            personForm.get('lastName').dirty) &&
+                                            !personForm.get('lastName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('lastName').errors?.required">
+              Please enter your last name.
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="emailId" class="col-md-2 col-form-label">Email Name</label>
-        <input id="emailId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="emailId"
+                 class="form-control"
+                 type="text"
+                 formControlName="email"
+                 placeholder="Enter email" />
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="phoneId" class="col-md-2 col-form-label">Phone/Cell</label>
-        <input id="phoneId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="phoneId"
+                 class="form-control"
+                 type="text"
+                 formControlName="phone"
+                 placeholder="Enter phone/cell number" />
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="dobId" class="col-md-2 col-form-label">Date Of Birth</label>
-        <input id="dobId" class="col-md-8 col-form-control" type="date" />
+        <div class="col-md-7">
+          <input id="dobId"
+                 class="form-control"
+                 type="date"
+                 formControlName="dateOfBirth"
+                 [ngClass]="{'is-invalid': (personForm.get('dateOfBirth').touched ||
+                                            personForm.get('dateOfBirth').dirty) &&
+                                            !personForm.get('dateOfBirth').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('dateOfBirth').errors?.required">
+              Please select date of birth.
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="interestsId" class="col-md-2 col-form-label">Interests</label>
-        <input id="interestId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="interestId"
+                 class="form-control"
+                 type="text"
+                 placeholder="Enter your interest" />
+        </div>
       </div>
 
       <h5>Address</h5>
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="streetId" class="col-md-2 col-form-label">Street</label>
-        <input id="streetId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="streetId"
+                 class="form-control"
+                 type="text"
+                 formControlName="street"
+                 placeholder="Enter your street address (required)"
+                 [ngClass]="{'is-invalid': (personForm.get('street').touched ||
+                                            personForm.get('street').dirty) &&
+                                            !personForm.get('street').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('street').errors?.required">
+              Please enter street address.
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-3">
         <label for="cityId" class="col-md-2 col-form-label">City</label>
-        <input id="cityId" class="col-md-8 col-form-control" type="text" />
+        <div class="col-md-7">
+          <input id="cityId"
+                 class="form-control"
+                 type="text"
+                 formControlName="city"
+                 placeholder="Enter your city name (required)"
+                 [ngClass]="{'is-invalid': (personForm.get('city').touched ||
+                                            personForm.get('city').dirty) &&
+                                            !personForm.get('city').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('city').errors?.required">
+              Please entery city name
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="form-group row mb-2">
-        <label for="stateId" class="col-md-2 col-form-label">State</label>
-        <input id="stateId" class="col-md-8 col-form-control" type="text" />
-      </div>
-      <br />
-      <div class="form-group row mb-2">
-        <label for="postalCodeId" class="col-md-2 col-form-label">Postal Code</label>
-        <input id="postalCodeId" class="col-md-8 col-form-control" type="text" />
+      <div class="form-group row mb-3">
+        <label for="stateId" class="col-md-2 col-form-label">State, Postal Code</label>
+        <div class="col-md-4">
+          <select id="stateId"
+                  class="form-control"
+                  formControlName="state">
+            <option value=""
+                    disabled
+                    selected
+                    hidden>
+              Select State
+            </option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="Arizona">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="Utah">Utah</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <input id="postalCodeId"
+                 class="form-control"
+                 type="text"
+                 formControlName="postalCode"
+                 [ngClass]="{'is-invalid': (personForm.get('postalCode').touched ||
+                                            personForm.get('postalCode').dirty) &&
+                                            !personForm.get('postalCode').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="personForm.get('postalCode').errors?.required">
+              Please entery postal code.
+            </span>
+          </span>
+        </div>
       </div>
 
-      <br />
       <h5>Upload Image</h5>
-      <div class="form-group row mb-2">
-        <label for="pictureNameId" class="col-md-2 col-form-label"></label>
-        <input id="pictureNameId" class="col-md-8 col-form-control" type="file" />
+      <div class="form-group">
+        <input id="pictureNameId"
+               class="form-control-file"
+               type="file"
+               formControlName="pictureName" />
+      </div>
+
+      <div class="form-group row mb-3">
+        <div class="offset-md-2 col-md-4 float-right">
+          <button class="btn btn-primary mr-3"
+                  type="button"
+                  style="width:80px">
+            Cancel
+          </button>
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="personForm.vali? 'Save Data' : 'Data is invalid'"
+                  [disabled]="!personForm.valid">
+            Save
+          </button>
+        </div>
       </div>
     </form>
-  </div>
-
-  <div class="card-footer">
-    
   </div>
 </div>
