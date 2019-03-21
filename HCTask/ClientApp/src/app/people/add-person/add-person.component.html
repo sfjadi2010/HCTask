@@ -5,8 +5,63 @@
 
   <div class="card-body">
     <form novalidate (ngSubmit)="savePerson()" [formGroup]="personForm">
+      <h5>Personal Information</h5>
       <div class="form-group row mb-2">
         <label for="firstNameId" class="col-md-2 col-form-label">First Name</label>
+        <input id="firstNameId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="lastNameId" class="col-md-2 col-form-label">Last Name</label>
+        <input id="lastNameId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="emailId" class="col-md-2 col-form-label">Email Name</label>
+        <input id="emailId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="phoneId" class="col-md-2 col-form-label">Phone/Cell</label>
+        <input id="phoneId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="dobId" class="col-md-2 col-form-label">Date Of Birth</label>
+        <input id="dobId" class="col-md-8 col-form-control" type="date" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="interestsId" class="col-md-2 col-form-label">Interests</label>
+        <input id="interestId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <h5>Address</h5>
+      <div class="form-group row mb-2">
+        <label for="streetId" class="col-md-2 col-form-label">Street</label>
+        <input id="streetId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="cityId" class="col-md-2 col-form-label">City</label>
+        <input id="cityId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="stateId" class="col-md-2 col-form-label">State</label>
+        <input id="stateId" class="col-md-8 col-form-control" type="text" />
+      </div>
+      <br />
+      <div class="form-group row mb-2">
+        <label for="postalCodeId" class="col-md-2 col-form-label">Postal Code</label>
+        <input id="postalCodeId" class="col-md-8 col-form-control" type="text" />
+      </div>
+
+      <br />
+      <h5>Upload Image</h5>
+      <div class="form-group row mb-2">
+        <label for="pictureNameId" class="col-md-2 col-form-label"></label>
+        <input id="pictureNameId" class="col-md-8 col-form-control" type="file" />
       </div>
     </form>
   </div>

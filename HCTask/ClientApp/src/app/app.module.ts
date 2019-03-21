@@ -6,9 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
 
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PersonComponent } from './people/person/person.component';
 import { AddPersonComponent } from './people/add-person/add-person.component';
 
@@ -16,8 +14,6 @@ import { AddPersonComponent } from './people/add-person/add-person.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    FetchDataComponent,
     PersonComponent,
     AddPersonComponent
   ],
@@ -26,9 +22,8 @@ import { AddPersonComponent } from './people/add-person/add-person.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'home', component: HomeComponent},
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: PersonComponent, pathMatch: 'full' },
+      { path: 'home', component: PersonComponent},
       { path: 'add-person', component: AddPersonComponent }
     ])
   ],
