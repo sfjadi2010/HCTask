@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using HCTask.Models;
 using HCTask.Repositories;
@@ -37,6 +40,23 @@ namespace HCTask.Controllers
         [HttpPost]
         public async Task<PersonRecord> Post([FromBody] PersonRecord personRecord)
         {
+            var folderName = Path.Combine("Resources", "Images");
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+            personRecord.PictureName = Guid.NewGuid() + Path.GetExtension(personRecord.PictureName);
+            var fullPath = Path.Combine(pathToSave, personRecord.PictureName);
+
+            if (personRecord.FileAsBase64.Contains(","))
+            {
+                personRecord.FileAsBase64 = personRecord.FileAsBase64.Substring(personRecord.FileAsBase64.IndexOf(",") + 1);
+            }
+
+            personRecord.FileAsByteArray = Convert.FromBase64String(personRecord.FileAsBase64);
+
+            using (var fs = new FileStream(fullPath, FileMode.CreateNew))
+            {
+                fs.Write(personRecord.FileAsByteArray, 0, personRecord.FileAsByteArray.Length);
+            }
+
             return await _repository.CreateAsync(personRecord);
         }
 

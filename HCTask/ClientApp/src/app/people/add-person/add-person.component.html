@@ -91,6 +91,7 @@
           <input id="interestId"
                  class="form-control"
                  type="text"
+                 formControlName="interests"
                  placeholder="Enter your interest" />
         </div>
       </div>
@@ -179,16 +180,19 @@
       <h5>Upload Image</h5>
       <div class="form-group">
         <input id="pictureNameId"
-               class="form-control-file"
-               type="file"
-               formControlName="pictureName" />
+         class="form-control-file"
+         type="file"
+         formControlName="pictureName"
+         placeholder="Choose file..."
+         (change)="onFileChagne($event)"/>
       </div>
 
       <div class="form-group row mb-3">
         <div class="offset-md-2 col-md-4 float-right">
           <button class="btn btn-primary mr-3"
                   type="button"
-                  style="width:80px">
+                  style="width:80px"
+                  (click)="onSaveCompleteCancel()">
             Cancel
           </button>
           <button class="btn btn-primary mr-3"

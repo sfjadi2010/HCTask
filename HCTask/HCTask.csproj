@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\Models\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

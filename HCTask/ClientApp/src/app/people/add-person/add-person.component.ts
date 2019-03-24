@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PersonRecord } from "../../Models/PersonRecord";
@@ -14,10 +14,11 @@ export class AddPersonComponent implements OnInit {
   pageTitle = "Add Person";
   errorMessage: string;
   personForm: FormGroup;
+  pictureToUpload: File = null;
 
   person: PersonRecord;
   
-  constructor(private fb: FormBuilder, private peopleService: PeopleService, private router: Router) { }
+  constructor(private fb: FormBuilder, private peopleService: PeopleService, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.personForm = this.fb.group({
@@ -31,18 +32,36 @@ export class AddPersonComponent implements OnInit {
       city: ['', Validators.required],
       postalCode: ['', Validators.required],
       state: [''],
-      pictureFile: ['']
+      pictureName: [''],
+      fileAsBase64: ['']
     });
+  }
+
+  onFileChagne(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.personForm.patchValue({
+          fileAsBase64: reader.result
+        });
+
+        this.cd.markForCheck();
+      }
+    }
   }
 
   savePerson() : void {
     if (this.personForm.valid && this.personForm.dirty) {
-      const p = { ...this.person, ...this.personForm.value };
+      const pRecord = { ...this.person, ...this.personForm.value };
 
-      if (p.id === 0) {
-        this.peopleService.createPerson(p)
+      if (pRecord) {
+        this.peopleService.createPerson(pRecord)
           .subscribe(
-            () => this.onSaveComplete(),
+            () => this.onSaveCompleteCancel(),
             (error: any) => this.errorMessage = <any>error
           );
       } else {
@@ -51,7 +70,7 @@ export class AddPersonComponent implements OnInit {
     }
   }
 
-  onSaveComplete(): void {
+  onSaveCompleteCancel(): void {
     this.personForm.reset();
     this.router.navigate(['/'])
   }
