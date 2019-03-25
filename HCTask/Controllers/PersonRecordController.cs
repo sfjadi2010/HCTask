@@ -31,30 +31,41 @@ namespace HCTask.Controllers
 
         // GET: api/PersonRecord/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<PersonRecord> Get(int id)
         {
-            return "value";
+            return await _repository.FindByIdAsync(id);
+        }
+
+        [HttpGet]
+        [Route("search/{searchtext}")]
+        public async Task<IEnumerable<PersonRecord>> Search(string searchtext)
+        {
+            return await _repository.SearchAsync(searchtext.ToLower());
         }
 
         // POST: api/PersonRecord
         [HttpPost]
         public async Task<PersonRecord> Post([FromBody] PersonRecord personRecord)
         {
-            var folderName = Path.Combine("Resources", "Images");
-            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-            personRecord.PictureName = Guid.NewGuid() + Path.GetExtension(personRecord.PictureName);
-            var fullPath = Path.Combine(pathToSave, personRecord.PictureName);
-
-            if (personRecord.FileAsBase64.Contains(","))
+            if (personRecord.PictureName != null)
             {
-                personRecord.FileAsBase64 = personRecord.FileAsBase64.Substring(personRecord.FileAsBase64.IndexOf(",") + 1);
-            }
+                var folderName = Path.Combine("Resources", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
-            personRecord.FileAsByteArray = Convert.FromBase64String(personRecord.FileAsBase64);
+                personRecord.PictureName = Guid.NewGuid() + Path.GetExtension(personRecord.PictureName);
+                var fullPath = Path.Combine(pathToSave, personRecord.PictureName);
 
-            using (var fs = new FileStream(fullPath, FileMode.CreateNew))
-            {
-                fs.Write(personRecord.FileAsByteArray, 0, personRecord.FileAsByteArray.Length);
+                if (personRecord.FileAsBase64.Contains(","))
+                {
+                    personRecord.FileAsBase64 = personRecord.FileAsBase64.Substring(personRecord.FileAsBase64.IndexOf(",") + 1);
+                }
+
+                personRecord.FileAsByteArray = Convert.FromBase64String(personRecord.FileAsBase64);
+
+                using (var fs = new FileStream(fullPath, FileMode.CreateNew))
+                {
+                    fs.Write(personRecord.FileAsByteArray, 0, personRecord.FileAsByteArray.Length);
+                }
             }
 
             return await _repository.CreateAsync(personRecord);
@@ -68,8 +79,12 @@ namespace HCTask.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            var person = await _repository.FindByIdAsync(id);
+            await _repository.DeleteAsync(person);
+
+            return;
         }
     }
 }

@@ -27,7 +27,9 @@ namespace HCTask.Repositories
 
         public async Task DeleteAsync(PersonRecord entity)
         {
-            throw new NotImplementedException();
+            _context.People.Remove(entity);
+            await _context.SaveChangesAsync();
+            return;
         }
 
         public async Task<IEnumerable<PersonRecord>> FindAllAsync()
@@ -35,14 +37,16 @@ namespace HCTask.Repositories
             return await _context.People.ToListAsync();
         }
 
-        public async Task<PersonRecord> FindByIdAsync(int Id)
+        public async Task<PersonRecord> FindByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.People.FindAsync(id);
         }
 
         public async Task<IEnumerable<PersonRecord>> SearchAsync(string searchText)
         {
-            throw new NotImplementedException();
+            return await _context.People.Where<PersonRecord>(
+                p => p.FirstName.ToLower().Contains(searchText) ||
+                p.LastName.ToLower().Contains(searchText)).ToListAsync();
         }
 
         public async Task<PersonRecord> UpdateAsync(PersonRecord entity)

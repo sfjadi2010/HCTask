@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { PersonRecord } from "../../Models/PersonRecord";
+import { PersonRecord } from "../../models/PersonRecord";
 import { PeopleService } from '../people.service';
 import { Router } from '@angular/router';
 

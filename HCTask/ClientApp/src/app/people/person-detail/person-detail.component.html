@@ -1,0 +1,13 @@
+<div class="row col-md-10">
+  <div class="col-md-3">
+    <img *ngIf="pictureName"
+         [src]="getImageUrl(pictureName)"
+         [style.width.px]="imageWidth"
+         [style.margin.px]="imageMargin" />
+  </div>
+  <div class="col-md-7">
+    <h5 class="card-title">{{ firstName }}, {{lastName}} ({{getAge(dob)}})</h5>
+    <p class="card-text">{{ street }} {{ city }}, {{ state}} - {{postalCode}}</p>
+    <p class="card-text">{{ interests }}</p>
+  </div>
+</div>

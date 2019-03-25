@@ -1,3 +1,27 @@
-<p>
-  person works!
-</p>
+<div class="row">
+  <div class="col-md-2"><h6>Fitler By:</h6> </div>
+  <div class="col-md-6">
+     <input class="form-control" type="text" [(ngModel)]="listFilter" />
+  </div>
+</div>
+<ul class="list">
+  <li *ngFor="let person of people; trackBy: byId; let i = index">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <app-person-detail [firstName]="person.firstName"
+                             [lastName]="person.lastName"
+                             [email]="person.email"
+                             [phone]="person.phone"
+                             [interests]="person.interests"
+                             [dob]="person.dateOfBirth"
+                             [street]="person.street"
+                             [city]="person.city"
+                             [state]="person.state"
+                             [postalCode]="person.postalCode"
+                             [pictureName]="person.pictureName"></app-person-detail>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

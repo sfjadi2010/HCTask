@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+
+ul.list {
+  box-shadow: none;
+}
+
+li {
+  list-style: none;
+}
+
+div.card-header {
+  font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
